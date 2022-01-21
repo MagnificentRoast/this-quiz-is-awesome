@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Welcome to my quiz!</title>
+    <title>Welcome to the JavaScript quiz!</title>
 </head>
 <body>
-    <header>Welcome to my quiz</header>
-    <script src="./assets/js/script.js"></script>
+    <header class="header">
+        <h1>Welcome to my quiz!</h1>
+        <p>This is a JavaScript quiz, you will be stested on your knowledge of JavaScript. Click the button to begin. For every incorrect answer, the timer goes down by 10 seconds. You have what it takes?</p>
+        <button class="btn" id="clicked">Start Quiz!</button>
+    </header>
+
+    <section id="timer" class="timer-position">
+        <p>Time remaining:</p>
+    </section>
+
+    <section class="q.container"></section>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
