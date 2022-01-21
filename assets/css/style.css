@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #497980;
+    --secondary-color: #fce138;
+}
+
 header {
     display: flex;
 }
