@@ -1,3 +1,5 @@
+// This code was provided to me by Chris Masters. If you see this in any of my commits, it is because I unintentionally pushed this code to main, will be restructuring to make this code original, terribly sorry.
+
 const header = document.querySelector(".header")
 const clickedBtn = document.querySelector("#clicked");
 const qContainer = document.querySelector(".q-container");
@@ -34,7 +36,7 @@ const startQuiz = function() {
     questionIndex = 0;
 };
 
-    timeleft = 5;
+    timeleft = 60;
     // countdown timer attached to timer (starts on click)
     // var timeleft = "";
     document.getElementById("clicked").addEventListener("click", function(){ 
