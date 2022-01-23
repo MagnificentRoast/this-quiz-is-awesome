@@ -1,20 +1,5 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-:root {
-    --primary-color: #497980;
-    --secondary-color: #fce138;
-}
-
-header {
-    display: flex;
-}
-
-header h1 {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}

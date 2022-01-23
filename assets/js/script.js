@@ -1,5 +1,4 @@
-// This code was provided to me by Chris Masters. If you see this in any of my commits, it is because I unintentionally pushed this code to main, will be restructuring to make this code original, terribly sorry.
-
+// const and let statements here. Note, I was working on getting this code wired to the HTML, but something went horribly wrong, I can click start quiz, it shows the first question, but all of the answers combine into one button and it isn't clickable. There are also a ton of errors. It doesn't save the high scores because of a lack of local storage code, and it doesn't move on to the next question. I sincerely apologize for the halfhaphard coding this week.
 const header = document.querySelector(".header")
 const clickedBtn = document.querySelector("#clicked");
 const qContainer = document.querySelector(".q-container");
@@ -7,28 +6,6 @@ const questBox = document.querySelector(".q-box");
 const everyAnswer = document.querySelector(".every-answer")
 let response = document.querySelector(".response");
 let timer = document.querySelector("#timer")
-
-
-// local storage //
-var results = ["highscore", "initials"];
-localStorage.setItem("q_results", JSON.stringify(results)); //store highscore
-var storedResults = JSON.parse(localStorage.getItem("q_results")); // retrieve them
-
-for(var i = 0; i < storedResults.length; i++){
-    console.log(storedResults[i]);
-}
-
-
-
-// let saveAnswer = function() {
-//     localStorage.setItem("answer", JSON.stringify(answer));
-// };
-
-// let loadAnswer = function() {
-//     answer = JSON.parse(localStorage.getItem("answer"));
-
-// }
-
 
 // start function
 const startQuiz = function() {
@@ -60,13 +37,12 @@ const startQuiz = function() {
         }, 1000);
         
         showQuestions();
-        header.remove(); //hide header on question on start
-        clickedBtn.remove(); // hide button on start
+        header.remove();
+        clickedBtn.remove();
     });
-    // timer end //
 
 
-//questions//
+//questions array provided to me by Chris Masters to help me understand syntax.
 var questionsArray = [
     {
         questionText: "Commonly used data types DO not include:",
@@ -97,18 +73,18 @@ var questionsArray = [
 //questions end//
 
 
-// show questions //  
+// show questions snippet found through a few tutorials
 const showQuestions = function(){
     let currQuestion = questionsArray[questionIndex];
     
     let qContainer = document.createElement("div");
-    questBox.prepend(qContainer); // prepend to attach to start of array
+    questBox.prepend(qContainer);
 
     let questionTitle = document.createElement("h3");
     questionTitle.textContent = currQuestion.questionText;
     qContainer.appendChild(questionTitle);
 
-    // questions insidde answer box
+    // questions would go into answer box here
     let aContainer = document.createElement("ol");
     everyAnswer.appendChild(aContainer);
 
@@ -124,26 +100,28 @@ const showQuestions = function(){
 
     aContainer.addEventListener("click", function(event) {
         answerChoice = event.target;
-        
-        // answered CORRECTLY
+
+        // if/else statement assistance by Chris Masters during a study group.
         if (answerChoice.id == currQuestion.answer) {
             response.innerHTML = '<h3>Correct</h3>';
             aContainer.appendChild(response);
             questionIndex++;
         }
-        // answered INCORRECTLY
+
         else {
             response.innerHTML = '<h3>Incorrect</h3>'; 
             aContainer.appendChild(response);
-            timeleft -=10; // 10 sec off for incorrect    
+            timeleft -=10; // 10 sec off for incorrect code shown by Chris Masters
             document.getElementById("timer").innerHTML = timeleft;
             questionIndex++;
         }
 
+        // So I tried some stuff here, but the functionality was never achieved sadly. I tried to wire up the HTML properly, but sadly time was not on my side.
+
         const displayNextQuestion = setTimeout(function() {
             if (questionIndex < questionsArray.length) {
-                qContainer.remove(); //remove previous question for next
-                aContainer.remove(); //remove previous answer for next
+                qContainer.remove();
+                aContainer.remove();
                 showQuestions();
             }
             else {
@@ -153,26 +131,11 @@ const showQuestions = function(){
     })
 }
 
-// // END QUIZ LOGIC and show results/highscore with initials entered
-// const endQuiz = function(){
-
-//     // stop timer
-//     clearInterval(timer);
-
-//     //hide questions/asnwers/button
-//     qContainer.remove(); //remove previous question for next
-//     everyAnswer.remove(); //remove answers
-
-
-// };
-
-
+// So for here I tried to get it to go into local storage, but I don't think I have local storage set up properly, because there were some errors in the console log apart from the basic functionality
 showResults = function(){
-    localStorage.getItem("q_results", JSON.stringify(results)); //store highscore
+    localStorage.getItem("q_results", JSON.stringify(results));
 }
-// results function
-//viewResults = function(){}
-    
+
 
 
 
